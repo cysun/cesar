@@ -32,7 +32,7 @@ user list manually. In particular, make sure each records is in the form:</p>
   <display:column title="Email" property="email" />
   <display:column title="CellPhone" property="cellPhone" />
   <display:column title="Address1" property="address1" />
-  <display:column title="Quarter Admitted" property="quarterAdmitted" />
+  <display:column title="Term Admitted" property="quarterAdmitted" />
 
 </display:table>
 

@@ -18,7 +18,7 @@
 </h4>
 </c:if>
 
-<p>Course plan for quarters is based on the user's major and the courses that the user has taken.<br /><br />
+<p>Course plan for terms is based on the user's major and the courses that the user has taken.<br /><br />
 In order to plan courses better,
 <c:if test="${not isAdvisor }" >
  please select your <a href="/cesar/profile.html?#tab-program"> major </a> and fill out the <a href="/cesar/profile.html?#tab-courses"> courses </a> that you have taken.

@@ -31,7 +31,7 @@
 		                type: 'column'
 		            },
 		            title: {
-		                text: 'Total Number of ' + title + ' by Quarter'
+		                text: 'Total Number of ' + title + ' by Term'
 		            },
 		            subtitle: {
 		                text: 'from ' + fromQ + ' to ' + toQ

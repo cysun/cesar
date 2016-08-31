@@ -82,7 +82,7 @@ $(function() {
 		</tr>
 
 		<tr>
-			<th>Quarter Admitted</th>
+			<th>Term Admitted</th>
 			<td><form:input path="quarterAdmitted" /></td>
 		</tr>
 

@@ -290,7 +290,7 @@ function cancelEnrollment( userId )
 					</td>
 				</tr>
 				<tr>
-					<td>Quarter</td>
+					<td>Term</td>
 					<td>
 						<select name="quarter">
 							<option value="Fall">Fall</option>
@@ -570,7 +570,7 @@ function cancelEnrollment( userId )
 				<td>${user.major.name}</td>
 			</tr>
 			<tr>
-				<th>Quarter Admitted</th>
+				<th>Term Admitted</th>
 				<td>${user.quarterAdmitted}</td>
 			</tr>
 			<tr>
@@ -706,7 +706,7 @@ function cancelEnrollment( userId )
 
 		<p><input type="hidden" name="userId" value="${user.id}" />
 			<select name="quarterCode" id="quarterCode" style="width:20%;">
-				<option value="">Select quarter</option>
+				<option value="">Select term</option>
 			</select>
 		</p>
 		
@@ -714,7 +714,7 @@ function cancelEnrollment( userId )
 		<form id="enrollmentForm" action="/cesar/user/addEnrollment.html" method="post">
 			<table class="tablesorter shadow" id="enrollmentTable" cellspacing="2" cellpadding="5" style="width: 55em;">
 				<thead>
-				  <tr><th>Quarter</th><th>Course Plan</th><th>Section Enrolled</th></tr>
+				  <tr><th>Term</th><th>Course Plan</th><th>Section Enrolled</th></tr>
 				</thead>
 				<tbody>
 				  <c:forEach items="${coursePlansMap}" var="entry">

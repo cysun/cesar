@@ -72,7 +72,7 @@
 		<h4>Department: ${major}</h4>
 	</c:if>
 	<c:if test="${not addSection}">
-		<h4>Department: ${schedule.major.symbol}, Quarter:${schedule.quarter}</h4>
+		<h4>Department: ${schedule.major.symbol}, Term:${schedule.quarter}</h4>
 	</c:if>
 </c:if>
 <form:form modelAttribute="section">
@@ -92,7 +92,7 @@
   		</c:if>
   		<c:if test="${addSection}">
 		  	<tr>
-				<th>*Quarter</th>
+				<th>*Term</th>
 				<td>
 					<select name="quarterCode">
 				 		<c:forEach items="${quarterList}" var="quarter">

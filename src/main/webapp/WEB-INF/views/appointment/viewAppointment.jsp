@@ -36,7 +36,7 @@ View Scheduled Appointments  </h3>
 					<th >End Time</th>
 					<th >Student</th>
 					<th >CIN</th>
-					<th >Quarter Admitted</th>
+					<th >Term Admitted</th>
 					<th >Advisor</th>
 					<th></th>
 					 
@@ -58,7 +58,7 @@ View Scheduled Appointments  </h3>
 					<th >End Time</th>
 					<th >Student</th>
 					<th >CIN</th>
-					<th >Quarter Admitted</th>
+					<th >Term Admitted</th>
 					<th >Advisor</th>
 					<th></th>
 				</tr>

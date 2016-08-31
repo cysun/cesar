@@ -56,14 +56,14 @@ public class Quarter {
         code = (calendar.get( Calendar.YEAR ) - 1800) * 10;
 
         int week = calendar.get( Calendar.WEEK_OF_YEAR );
-        if( week < 13 )
-            code += 1; // Winter quarter: week 1-12
-        else if( week < 25 )
-            code += 3; // Spring quarter: week 13-24
-        else if( week < 38 )
-            code += 6; // Summer quarter: week 25-37
+        if( week < 4 )
+            code += 1; // Winter term: week 1-3
+        else if( week < 22 )
+            code += 3; // Spring term: week 4-21
+        else if( week < 34 )
+            code += 6; // Summer term: week 22-33
         else
-            code += 9; // Fall quarter: week 38-
+            code += 9; // Fall term: week 34-
     }
 
     public Quarter next()

@@ -23,7 +23,7 @@
 		 	<input type="hidden" name="major" value="${major}" />
 		 	<input type="submit" value="Ok"/>
 		</form>
-		<p>Quarter: ${schedule.quarter} </p> 
+		<p>Term: ${schedule.quarter} </p> 
 	
 		<table class="tablesorter shadow" cellspacing="2" cellpadding="5" style="width:100%;">
 		<thead>

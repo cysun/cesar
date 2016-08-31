@@ -68,7 +68,7 @@
   		</td>
   	</tr>
   	<tr>
-  		<td>Quarter</td>
+  		<td>Term</td>
   		<td>
   			<form:select path="quarter" items="${courseTaken.quarterValues}" />
   		</td>

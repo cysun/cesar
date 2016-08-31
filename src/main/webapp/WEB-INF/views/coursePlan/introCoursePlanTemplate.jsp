@@ -11,7 +11,7 @@
 </h4>
 
 
-<p>Course plan template for quarters is based on the majors and Course schedules<br /><br />
+<p>Course plan template for terms is based on the majors and Course schedules<br /><br />
 In order to plan course template better,
 
  please fill out the <a href="<c:url value='user/schedule/displaySchedules.html' />"> Course Schedules </a> that have offered.

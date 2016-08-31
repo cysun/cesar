@@ -11,7 +11,7 @@ Schedules</h3>
 <h4>
 	<a href="<c:url value='/schedule/displaySchedules.html' />">Display A Schedule</a> | Import A Schedule 
 </h4>
-<p>Please choose the department and the quarter, then copy and paste courses schedule from XML spreadsheet to
+<p>Please choose the department and the term, then copy and paste courses schedule from XML spreadsheet to
 the text area below. The XML spreadsheet should be in the following format:<br />
 (Monday= M, TuesDay = T, WednesDay = W, Thursday = R/TH, Friday = F, Saturday = S, Sunday = U ):</p>
 <table class="tablesorter">
@@ -27,7 +27,7 @@ the text area below. The XML spreadsheet should be in the following format:<br /
 <form:form method="post" modelAttribute="importScheduleCommand">
 	Department:<form:select path="major" items="${majors}" itemValue="id" itemLabel="symbol" />
 	
-	Quarter:
+	Term:
 	<form:select path="quarter" >
 		<c:forEach var="quarter" items="${quarters }">
 			<form:option value="${quarter}">
