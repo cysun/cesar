@@ -1,0 +1,183 @@
+/* CSS Document */
+/*web colors
+ orange       #FFD400
+ yellow 		 #FAE9B1
+ black		 #333333
+ grey		 #999999
+ dark grey    #6F6F6F
+ light grey  #F0F0F6
+ dark blue	 #036
+ blue	 	 #004E9B
+ white blue   #D3EBFE
+ */
+body {
+	font-family: verdana, sans-serif;
+	font-size: 16px;
+	background-image: url(images/darkTile.gif);
+	background-color: #999;
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	border: 0;
+	margin: 0 auto;
+	padding: 0px;
+	height: auto;
+	width: 1150px;
+}
+
+#header {
+	width: 1150px;
+	height: 110px;
+	padding: 10px 0 0 0;
+	background: #D3EBFE;
+}
+
+#header_img {
+	float: left;
+	width: 65%;
+	padding: 0 0 0 10px;
+	padding-right: 5%;
+	height: 90px;
+}
+
+#lpanel {
+	margin-right: 0;
+	padding: 0;
+}
+
+#login_table {
+	width:200px;
+	font-size: 12px;
+}
+#login_table th{
+	text-align:left;
+}
+
+#login_panel{
+	padding: 50px 0 5px 30px;
+}
+
+#menu {
+	width: 1150px;
+	float: left;
+	height: 38px;
+	background-color: #036;
+}
+
+#main {
+	float: left;
+	min-height: 400px;
+	margin: 0px auto;
+	padding: 0 10px 0 10px;
+	width: 1130px;
+	background: #FFF;
+}
+
+#main p{
+	font-size: 1.0em;
+}
+
+#footer {
+	float: left;
+	background-color: #036;
+	width: 1150px;
+	height: 30px;
+}
+
+#footer p {
+	padding: 10px 0 0 0;
+	margin: 0;
+	color: #FFF;
+	text-align:center;
+}
+
+#shadow {
+	-webkit-box-shadow: 5px 2px 6px #000;
+	-moz-box-shadow: 5px 2px 6px #000;
+	padding: 4px 10px;
+	background: #FFF;
+}
+
+.shadow {
+	-webkit-box-shadow: 5px 2px 6px #000;
+	-moz-box-shadow: 5px 2px 6px #000;
+	padding: 4px 10px;
+	background: #FFF;
+}
+
+.usertable {
+	margin: 5px auto 30px auto;
+	font-family: verdana, sans-serif;
+	font-size: 100%;
+	border-collapse: collapse;
+}
+
+.usertable th {
+	width: 300px;
+	padding: 8px 3px 8px 3px;
+	border: #004E9B 1px solid;
+	vertical-align: top;
+	text-align: left;
+}
+
+.usertable td {
+	width: 300px;
+	border: #004E9B 1px solid;
+	text-align: left;
+	padding: 8px 3px 8px 3px;
+	vertical-align: top;
+}
+
+.usertable thead th {
+	background-color: #004E9B;
+	padding: 3px 3px;
+	color: #FFF;
+}
+
+.usertable tbody td {
+	text-align: left;
+}
+
+.imgLinks {
+	border: none;
+	float: right;
+}
+
+.imgLink img{
+	border: none;
+	float: right;
+}
+
+.imgLinked img{
+	border: none;
+}
+
+.invisible{
+	display:none;
+}
+
+.error{
+	color: red;
+	font-size: 10px;
+}
+
+.notice{
+	font-size: 12px;
+}
+
+a:link {
+	color: #333333;
+}
+
+a:visited {
+	color: #036;
+}
+
+a:hover,a:active,a:focus {
+	color: #036;
+	text-decoration: none;
+}
+
+

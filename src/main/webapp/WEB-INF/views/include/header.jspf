@@ -1,0 +1,150 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<link href="<c:url value='/resources/css/cesar.css' />" type="text/css"
+			rel="stylesheet" />
+		<link href="<c:url value='/resources/css/style.css' />" type="text/css"
+			rel="stylesheet" />
+		<link href="<c:url value='/resources/css/jquery-ui-redmond.css' />"
+			rel="stylesheet" type="text/css" />
+		<link href="<c:url value='/resources/css/dropdown.css' />"
+			rel="stylesheet" type="text/css" />
+		<link href="<c:url value='/resources/css/helper.css' />"
+			rel="stylesheet" type="text/css" />
+		<link href="<c:url value='/resources/css/default.css' />"
+			rel="stylesheet" type="text/css" />
+		<link href="<c:url value='/resources/css/jquery-ui-timepicker.css?v=0.2.3' />"
+			rel="stylesheet" type="text/css" />
+		<link href="<c:url value='/resources/css/jquery.multiselect.css' />"
+			rel="stylesheet" type="text/css" />
+			
+		<script type="text/javascript"
+			src="<c:url value='/resources/js/jquery.js' />"></script>
+		<script type="text/javascript"
+			src="<c:url value='/resources/js/script.js' />"></script>
+		<script type="text/javascript"
+			src="<c:url value='/resources/js/jquery-ui.js' />"></script>
+		<script type="text/javascript" 
+			src="<c:url value='/resources/js/jquery.ui.timepicker.js?v=0.2.3' />"></script>
+		<script type="text/javascript"
+			src="<c:url value='/resources/js/jquery.tablesorter.min.js' />"></script>
+		<script type="text/javascript"
+			src="<c:url value='/resources/js/jquery.validate.js' />"></script>	
+		<script type="text/javascript"
+			src="<c:url value='/resources/js/jquery.maskedinput.js' />"></script>
+		<script type="text/javascript"
+			src="<c:url value='/resources/js/jquery.multiselect.js' />"></script>
+		<script type="text/javascript"
+			src="<c:url value='/resources/js/highcharts.js' />"></script>
+			
+			
+		${headElements }
+	</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="header_img">
+				<a class="imgLinked" href="<c:url value="/" />">
+					<img
+						src="<c:url value='/resources/img/cesar_logo_3.png' />"
+					alt="template image"/>
+				</a>
+			</div>
+			<%@ include file="/WEB-INF/views/include/lpanel.jspf"%>
+		</div>
+
+		<div id="menu">
+			<ul id="nav" class="dropdown dropdown-horizontal">
+				<security:authorize access="hasRole('ROLE_USER')">
+				<li>Appointments
+					<ul>
+					
+						<security:authorize access="hasRole('ROLE_ADVISOR')">
+							<li class="first"><a href="<c:url value='/appointment/advisor/viewAppointment.html' />">Advisor Appointments</a></li>
+                        </security:authorize>
+						<security:authorize access="hasRole('ROLE_STUDENT')">
+							<li class="first"><a href="<c:url value='/appointment/student/viewAppointment.html' />">Student Appointments</a></li>
+                        	<li class="first"><a href="<c:url value='/appointment/makeAppointment.html' />">Make An Appointment</a></li>
+                        </security:authorize>
+                        <security:authorize access="hasAnyRole('ROLE_ADVISOR','ROLE_STAFF')">
+							
+							<li class="first"><a href="<c:url value='/appointment/advisor/initialMakeAppointment.html' />">Make An Appointment For Student</a></li>
+							
+							<li class="first"><a href="<c:url value='/appointment/advisor/walkInAppointment.html' />">Walk In Appointment</a></li>
+						</security:authorize>
+						<security:authorize access="hasAnyRole('ROLE_STAFF')">
+							<li class="first"><a href="<c:url value='/appointment/staff/viewAppointmentWithSpecificDate.html' />">View Appointments</a></li>
+						</security:authorize>
+                        
+					</ul>
+				</li>	
+				</security:authorize>
+				
+				<security:authorize access="hasAnyRole('ROLE_ADVISOR','ROLE_STAFF')">
+				<li>Advisor Schedule
+					<ul>
+						<security:authorize access="hasAnyRole('ROLE_ADVISOR','ROLE_STAFF')">
+						<li class="first"><a href="<c:url value='/user/advisorSchedule/advisorsScheduleTable.html' />">Schedule Table</a></li>
+                        </security:authorize>
+					</ul>
+				</li>	
+				</security:authorize>
+
+				<security:authorize access="hasAnyRole('ROLE_ADVISOR','ROLE_STAFF')">
+				<li>People
+					<ul>
+					   <li class="first"><a href="<c:url value='/user/displayStudentsTable' />">Students</a></li>
+		               <li class="first"><a href="<c:url value='/user/displayAdvisorsTable' />">Advisors</a></li>
+					   <li class="first"><a href="<c:url value='/user/displayStaffsTable' />">Staffs</a></li>
+					   <li class="first"><a href="<c:url value='/user/search/user/search.html' />">Users</a></li>
+					</ul>
+				</li>
+				</security:authorize>
+
+                <security:authorize access="hasAnyRole('ROLE_STUDENT','ROLE_ADVISOR','ROLE_STAFF')">
+                <li>Resources
+                    <ul>
+                    	
+                        <li class="first"><a href="<c:url value='/course/displayCourses.html' />">Courses</a></li>
+                        <li class="first"><a href="<c:url value='/schedule/displaySchedules.html' />">Courses Schedules</a></li>
+                        <security:authorize access="hasAnyRole('ROLE_ADVISOR','ROLE_STAFF')">
+                        	<li class="first"><a href="<c:url value='/user/coursePlan/viewCoursePlanTemplates.html' />">Course Plan Templates</a></li>
+                        	<li class="first"><a href="<c:url value='/course/displayCoHort.html' />">Co-Hort</a></li>
+                   		</security:authorize>
+                    </ul>
+                </li>
+                </security:authorize>
+ 
+				<security:authorize access="hasAnyRole('ROLE_STAFF')">
+				<li>Visits
+					<ul>
+						<li class="first"><a href="<c:url value='/service/addService.html' />">Service</a></li>
+						<li class="first"><a href="<c:url value='/visitReason/addVisitReason.html' />">Visit Reason</a></li>
+						<li class="first"><a href="<c:url value='/noSeenReason/addNoSeenReason.html' />">No Seen Reason</a></li>
+						
+					</ul>
+				</li>
+				</security:authorize>
+				
+				<security:authorize access="hasAnyRole('ROLE_STAFF')">
+				<li>Reports
+					<ul>
+						<!-- <li class="first"><a href="<c:url value='/storedQuery/viewStoredQueries.html' />" >Reports </a></li> -->
+						<li class="first"><a href="<c:url value='/report/viewAppointmentReport.html' />" >Appointment </a></li>
+						<li class="first"><a href="<c:url value='/report/viewAdvisementEnrollmentReport.html' />" >Advisement/ Enrollment </a></li>
+						<li class="first"><a href="<c:url value='/report/viewVisitReport.html' />" >Visit </a></li>
+
+					</ul>
+				</li>
+				</security:authorize>
+
+				<li><a href="#">Help</a></li>
+			</ul>
+		</div>
+
+		<div id="main">

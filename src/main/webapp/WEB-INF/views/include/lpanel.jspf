@@ -1,0 +1,57 @@
+<div id="lpanel">
+	<security:authorize access="isAnonymous()">
+		<form method="post" action="<c:url value='/j_spring_security_check' />">
+			<table style="font-size:small">
+				<tr> 
+					<td align="right">Username</td>
+					<td><input type="text" style="width:11em;" name="j_username" /></td>
+				</tr>
+				<tr style="background: #D3EBFE;">
+					<td align="right">Password</td>
+					<td><input type="password" style="width: 11em;" name="j_password" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right">Remember me
+					<input type="checkbox" name="_spring_security_remember_me" />
+					
+					<a href="<c:url value="/forgotPassword.html" />">Forgot Password</a></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right">
+						<input type="button" value="Register" name="Register" onclick="location='/cesar/register.html'">
+						<input type="submit" value="Login" />
+						<input type="reset" value="Reset" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</security:authorize> 
+
+	<security:authorize access="isAuthenticated()">
+		<table class="imgLinked" id="login_table">
+			<tr>
+				<th colspan="2">
+					<p>Welcome, <security:authentication property="name" />!</p>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<a href="<c:url value="/profile.html" />"><img src="<c:url value='/resources/img/user32.png' />" alt="user profile" />
+						<span class="invisible">Profile</span></a>
+				</th>
+				<th>
+					<a href="<c:url value="/j_spring_security_logout" />">
+					<img src="<c:url value='/resources/img/block32.png' />" alt="logout" />
+					<span class="invisible">Logout</span>
+						</a>
+				</th>
+			</tr>
+			<tr>
+				<th>Profile</th>
+				<th>Logout</th>
+			</tr>
+			
+		</table>
+	</security:authorize>
+</div>
+

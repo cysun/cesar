@@ -1,0 +1,76 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+          "-//Hibernate/Hibernate Configuration DTD//EN"
+          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- ================= -->
+        <!-- database settings -->
+        <!-- ================= -->
+
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.PostgreSQLDialect
+        </property>
+
+        <property name="query.substitutions">yes 'Y', no 'N'</property>
+        <property name="jdbc.use_streams_for_binary">true</property>
+        <property name="show_sql">false</property>
+
+        <!-- ===== -->
+        <!-- Cache -->
+        <!-- ===== -->
+
+        <property name="hibernate.cache.region.factory_class">
+            net.sf.ehcache.hibernate.EhCacheRegionFactory
+        </property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+
+        <!-- ======== -->
+        <!-- mappings -->
+        <!-- ======== -->
+
+        <mapping class="cesar.model.User" />
+		<mapping class="cesar.model.Role" />
+		<mapping class="cesar.model.HighSchool" />
+		<mapping class="cesar.model.HighSchoolProgram" />
+		<mapping class="cesar.model.Ethnicity" />
+		<mapping class="cesar.model.ExtraCurriculumActivity" />
+		<mapping class="cesar.model.ExtraCurriculumActivityType" />
+		<mapping class="cesar.model.FinancialAid" />
+		<mapping class="cesar.model.FinancialAidType" />
+		<mapping class="cesar.model.Major" />
+		<mapping class="cesar.model.Quarter" />
+		<mapping class="cesar.model.Advisement" />
+		<mapping class="cesar.model.Course" />
+		<mapping class="cesar.model.CourseTaken" />
+		<mapping class="cesar.model.Prerequisite" />
+		<mapping class="cesar.model.Schedule" />
+		<mapping class="cesar.model.Section" />
+		<mapping class="cesar.model.CoursePlan" />
+		<mapping class="cesar.model.QuarterPlan" />
+		<mapping class="cesar.model.AppointmentSection" />
+		<mapping class="cesar.model.ScheduleTable" />
+		<mapping class="cesar.model.ScheduleTableSection" />
+		<mapping class="cesar.model.AdvisorScheduleSection" />
+		<mapping class="cesar.model.AdvisorScheduleRecord" />
+		<mapping class="cesar.model.StoredQuery" />
+		<mapping class="cesar.model.Service" />
+		<mapping class="cesar.model.ServiceType" />
+		<mapping class="cesar.model.NoSeenReason" />
+		<mapping class="cesar.model.NoSeenReasonType" />
+		<mapping class="cesar.model.VisitReason" />
+		<mapping class="cesar.model.VisitReasonType" />
+		<mapping class="cesar.model.WeekDay" />
+		<mapping class="cesar.model.AppointmentType" />
+		<mapping class="cesar.model.ReasonForAppointment" />
+		<mapping class="cesar.model.CourseTransferred" />
+		<mapping class="cesar.model.CourseWaived" />
+		<mapping class="cesar.model.GeneratedCin" />
+		<mapping class="cesar.model.Block" />
+		<mapping class="cesar.model.Report" />
+    </session-factory>
+
+</hibernate-configuration>

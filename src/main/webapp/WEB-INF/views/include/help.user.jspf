@@ -1,0 +1,40 @@
+<script type="text/javascript">
+/* <![CDATA[ */
+$(function(){
+    $('#user_generate_cin_help').dialog({
+        autoOpen: false,
+        title: 'Help',
+        width: 450
+    });
+    
+    $('#user_generate_cin_help_link').click(function(){
+        $('#user_generate_cin_help').dialog('open');
+        return false;
+    });
+    
+    $('#user_advisement_for_advisor_only_help').dialog({
+        autoOpen: false,
+        title: 'Help'
+    });
+    
+    $('#user_advisement_for_advisor_only_help_link').click(function(){
+        $('#user_advisement_for_advisor_only_help').dialog('open');
+        return false;
+    });
+});
+/* ]]> */
+</script>
+
+<div id="user_generate_cin_help">
+<p>If you are creating an account for a user who does not have a CIN, e.g.
+a faculty member, please click on <tt>Generate CIN</tt> to generate a CIN
+number for this user.</p>
+<p>Note that CIN is very important for the system, so if a user does have
+a CIN, please enter the real CIN instead of using a generated one because
+otherwise it will cause problem later on.</p>
+</div>
+
+<div id="user_advisement_for_advisor_only_help">
+<p>Comments marked as <em>for advisor only</em> will not show up in
+the student's view.</p>
+</div>

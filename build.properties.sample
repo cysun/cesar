@@ -1,0 +1,16 @@
+# Database information
+db.driver=org.postgresql.Driver
+db.url=jdbc:postgresql://localhost:5432/cesar
+db.username=cysun
+db.password=abcd
+
+# Email information
+mail.smtp.server=localhost
+mail.smtp.username=cysun@localhost.localdomain
+mail.smtp.password=abcd
+mail.from=ecstarc@cslanet.calstatela.edu
+
+# Logging configuration
+log.file=E:/TEMP/cesar.log
+log.level=info
+log.request=true

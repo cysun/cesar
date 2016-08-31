@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <mvc:annotation-driven />
+
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <mvc:interceptors>
+        <bean class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+            <property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+    </mvc:interceptors>
+
+    <mvc:view-controller path="/login.html" view-name="login" />
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <context:component-scan base-package="cesar.spring.editor" />
+    <context:component-scan base-package="cesar.spring.controller" />
+	
+	<!--====================-->
+    <!-- exception handling -->
+    <!--====================-->
+
+    <bean id="exceptionResolver"
+        class="cesar.spring.handler.ExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="AccessDeniedException">exception/access</prop>
+            </props>
+        </property>
+        <property name="exceptionAttribute" value="exception" />
+        <property name="defaultStatusCode" value="500" />
+        <property name="defaultErrorView" value="exception/default" />
+    </bean>
+
+</beans>
