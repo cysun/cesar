@@ -81,7 +81,7 @@
         name varchar(255),
         note varchar(255),
         time_stamp timestamp,
-        units int4,
+        units float8,
         major_id int4,
         student_id int4,
         primary key (id)
@@ -106,7 +106,7 @@
         is_graduate_course bool not null,
         name varchar(255),
         repeatable bool not null,
-        units int4 not null,
+        units float8 not null,
         primary key (id)
     );
 
@@ -273,7 +273,7 @@
         id int4 not null,
         notes varchar(255),
         quarter int4,
-        units int4,
+        units float8,
         primary key (id)
     );
 
@@ -341,7 +341,7 @@
         option_info varchar(255),
         section_number varchar(255),
         start_time varchar(255),
-        units int4 not null,
+        units float8 not null,
         course_id int4,
         primary key (id)
     );
@@ -539,22 +539,27 @@
         references prerequisites;
 
     alter table course_quarter_plans 
+        add constraint FK7D6815F3A26CCFE2 
+        foreign key (course_plan_id) 
+        references course_plans;
+
+    alter table course_quarter_plans 
         add constraint FK7D6815F353706942 
         foreign key (quarter_plan_id) 
         references quarter_plans;
 
-    alter table course_quarter_plans 
-        add constraint FK7D6815F3A26CCFE2 
-        foreign key (course_plan_id) 
-        references course_plans;
+    alter table courses_taken 
+        add constraint FK6A9A39808E49088B 
+        foreign key (course_id) 
+        references courses;
 
     alter table courses_taken 
         add constraint FK6A9A3980F0A3365B 
         foreign key (student_id) 
         references users;
 
-    alter table courses_taken 
-        add constraint FK6A9A39808E49088B 
+    alter table courses_transferred 
+        add constraint FK16DA22BF8E49088B 
         foreign key (course_id) 
         references courses;
 
@@ -568,8 +573,8 @@
         foreign key (advisor_id) 
         references users;
 
-    alter table courses_transferred 
-        add constraint FK16DA22BF8E49088B 
+    alter table courses_waived 
+        add constraint FKEDCAD6BD8E49088B 
         foreign key (course_id) 
         references courses;
 
@@ -583,24 +588,14 @@
         foreign key (advisor_id) 
         references users;
 
-    alter table courses_waived 
-        add constraint FKEDCAD6BD8E49088B 
-        foreign key (course_id) 
-        references courses;
-
-    alter table enrolled_sections 
-        add constraint FKF99A71682567A2CB 
-        foreign key (user_id) 
-        references users;
-
     alter table enrolled_sections 
         add constraint FKF99A7168FC939109 
         foreign key (section_id) 
         references sections;
 
-    alter table extra_curriculum_activities 
-        add constraint FK2C3AFB82F0A3365B 
-        foreign key (student_id) 
+    alter table enrolled_sections 
+        add constraint FKF99A71682567A2CB 
+        foreign key (user_id) 
         references users;
 
     alter table extra_curriculum_activities 
@@ -608,8 +603,8 @@
         foreign key (type_id) 
         references extra_curriculum_activity_types;
 
-    alter table financial_aids 
-        add constraint FK3D69F8ADF0A3365B 
+    alter table extra_curriculum_activities 
+        add constraint FK2C3AFB82F0A3365B 
         foreign key (student_id) 
         references users;
 
@@ -618,25 +613,30 @@
         foreign key (type_id) 
         references financial_aid_types;
 
-    alter table high_school_programs_attended 
-        add constraint FK9027587B7E3261A1 
-        foreign key (high_school_program_id) 
-        references high_school_programs;
+    alter table financial_aids 
+        add constraint FK3D69F8ADF0A3365B 
+        foreign key (student_id) 
+        references users;
 
     alter table high_school_programs_attended 
         add constraint FK9027587B2567A2CB 
         foreign key (user_id) 
         references users;
 
-    alter table major_courses 
-        add constraint FKD6C5B7329840C049 
-        foreign key (major_id) 
-        references majors;
+    alter table high_school_programs_attended 
+        add constraint FK9027587B7E3261A1 
+        foreign key (high_school_program_id) 
+        references high_school_programs;
 
     alter table major_courses 
         add constraint FKD6C5B7328E49088B 
         foreign key (course_id) 
         references courses;
+
+    alter table major_courses 
+        add constraint FKD6C5B7329840C049 
+        foreign key (major_id) 
+        references majors;
 
     alter table no_seen_reasons 
         add constraint FK2476FEA962123C16 
@@ -644,14 +644,14 @@
         references no_seen_reason_types;
 
     alter table office_hours_schedule_sections 
-        add constraint FK82C771233A7537D 
-        foreign key (advisor_schedule_section_id) 
-        references advisor_schedule_sections;
-
-    alter table office_hours_schedule_sections 
         add constraint FK82C771232567A2CB 
         foreign key (user_id) 
         references users;
+
+    alter table office_hours_schedule_sections 
+        add constraint FK82C771233A7537D 
+        foreign key (advisor_schedule_section_id) 
+        references advisor_schedule_sections;
 
     alter table participate_advisors 
         add constraint FK3A2ED3F4C8C624CD 
@@ -664,17 +664,12 @@
         references users;
 
     alter table plan_courses 
-        add constraint FK39181CA253706942 
-        foreign key (quarter_plan_id) 
-        references quarter_plans;
-
-    alter table plan_courses 
         add constraint FK39181CA28E49088B 
         foreign key (course_id) 
         references courses;
 
-    alter table plan_sections 
-        add constraint FK3860828453706942 
+    alter table plan_courses 
+        add constraint FK39181CA253706942 
         foreign key (quarter_plan_id) 
         references quarter_plans;
 
@@ -682,6 +677,11 @@
         add constraint FK38608284FC939109 
         foreign key (section_id) 
         references sections;
+
+    alter table plan_sections 
+        add constraint FK3860828453706942 
+        foreign key (quarter_plan_id) 
+        references quarter_plans;
 
     alter table prerequisite_courses 
         add constraint FK98EC172F8E49088B 
@@ -694,14 +694,14 @@
         references prerequisites;
 
     alter table schedule_sections 
-        add constraint FK3414F6D61BFABECB 
-        foreign key (schedule_id) 
-        references schedules;
-
-    alter table schedule_sections 
         add constraint FK3414F6D6FC939109 
         foreign key (section_id) 
         references sections;
+
+    alter table schedule_sections 
+        add constraint FK3414F6D61BFABECB 
+        foreign key (schedule_id) 
+        references schedules;
 
     alter table schedules 
         add constraint FKF66BC0BC9840C049 
@@ -709,14 +709,14 @@
         references majors;
 
     alter table section_students_enrolled 
-        add constraint FK3F501BB22567A2CB 
-        foreign key (user_id) 
-        references users;
-
-    alter table section_students_enrolled 
         add constraint FK3F501BB2FC939109 
         foreign key (section_id) 
         references sections;
+
+    alter table section_students_enrolled 
+        add constraint FK3F501BB22567A2CB 
+        foreign key (user_id) 
+        references users;
 
     alter table section_week_days 
         add constraint FKA0FAC0E8896CF7C0 
@@ -744,19 +744,24 @@
         references users;
 
     alter table table_sections_mapping 
-        add constraint FKE3048C0EC8C624CD 
-        foreign key (schedule_table_section_id) 
-        references schedule_table_sections;
-
-    alter table table_sections_mapping 
         add constraint FKE3048C0E38C2097A 
         foreign key (schedule_table_id) 
         references schedule_tables;
+
+    alter table table_sections_mapping 
+        add constraint FKE3048C0EC8C624CD 
+        foreign key (schedule_table_section_id) 
+        references schedule_table_sections;
 
     alter table users 
         add constraint FK6A68E08921A1B50 
         foreign key (high_school_id) 
         references high_schools;
+
+    alter table users 
+        add constraint FK6A68E08B665513C 
+        foreign key (current_advisor_id) 
+        references users;
 
     alter table users 
         add constraint FK6A68E083603D309 
@@ -767,11 +772,6 @@
         add constraint FK6A68E089840C049 
         foreign key (major_id) 
         references majors;
-
-    alter table users 
-        add constraint FK6A68E08B665513C 
-        foreign key (current_advisor_id) 
-        references users;
 
     alter table visit_reasons 
         add constraint FK291C2FBBFB5F1871 

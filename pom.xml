@@ -72,11 +72,13 @@
         <artifactId>hibernate-tools</artifactId>
         <version>3.2.4.GA</version>
     </dependency>
+<!--
     <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>jcl-over-slf4j</artifactId>
         <version>1.6.1</version>
     </dependency>
+-->
     <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
@@ -91,6 +93,12 @@
         <groupId>displaytag</groupId>
         <artifactId>displaytag</artifactId>
         <version>1.2</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl104-over-slf4j</artifactId>
+            </exclusion>
+        </exclusions>
     </dependency>
     <dependency>
         <groupId>commons-fileupload</groupId>
@@ -131,7 +139,7 @@
     <dependency>
     	<groupId>org.apache.tomcat</groupId>
     	<artifactId>tomcat-jdbc</artifactId>
-    	<version>7.0.35</version>
+    	<version>8.0.32</version>
     </dependency>
   </dependencies>
   <build>
